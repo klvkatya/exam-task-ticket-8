@@ -1,14 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Экзамен - Билет №8</title>
+    <style>
+        .catalog { display: flex; gap: 20px; padding: 20px; }
+        .product { 
+            border: 1px solid #ccc; 
+            padding: 20px; 
+            border-radius: 8px; 
+            width: 200px; 
+            transition: 0.3s; 
+        }
+        .product.is-favorite { 
+            border: 3px solid #a5f3a5; 
+            background-color: #f5f5f5;
+        }
+
+        .btn { margin-top: 10px; display: block; width: 100%; cursor: pointer; }
+        .description { margin: 10px 0; color: #555; font-style: italic; }
+    </style>
 </head>
 <body>
-    <div class="product-card">
-        <h1>Товар №1</h1>
-        <button class="btn" onclick="alert('Описание открыто')">Описание</button>
-        <button class="btn" onclick="alert('В избранном!')">В избранное</button>
-        <button class="btn" onclick="alert('Заявка отправлена')">Заявка</button>
+
+    <div class="catalog">
+        <div class="product">
+            <h3>Смартфон</h3>
+            <div class="description" id="desc1" style="display:none;">Описание: Работает, удобный, хороший телефон.</div>
+            <button class="btn" onclick="toggleDescription('desc1')">Описание</button>
+            <button class="btn" onclick="toggleFavorite(this)">В избранное</button>
+            <button class="btn" onclick="sendOrder('Смартфон')">Заявка</button>
+        </div>
+
+        <div class="product">
+            <h3>Ноутбук</h3>
+            <div class="description" id="desc2" style="display:none;">Описание: Мощный рабочий инструмент.</div>
+            <button class="btn" onclick="toggleDescription('desc2')">Описание</button>
+            <button class="btn" onclick="toggleFavorite(this)">В избранное</button>
+            <button class="btn" onclick="sendOrder('Ноутбук')">Заявка</button>
+        </div>
     </div>
+
+    <script>
+        function toggleDescription(descId) {
+            const desc = document.getElementById(descId);
+            desc.style.display = (desc.style.display === "none") ? "block" : "none";
+        }
+
+        function toggleFavorite(btn) {
+            const card = btn.closest('.product');
+            card.classList.toggle('is-favorite');
+        }
+        function sendOrder(name) {
+            alert('Заявка на "' + name + '" отправлена!');
+        }
+    </script>
 </body>
 </html>
