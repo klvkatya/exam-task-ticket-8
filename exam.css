@@ -1,0 +1,4 @@
+.btn { background-color: #ddd; border: none; padding: 10px; cursor: pointer; }
+.btn:hover { background-color: #bbb; }
+.btn:active { background-color: #888; }
+.btn:focus { outline: 2px solid blue; }
